@@ -101,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="garbage-can-regression-challenge" class="level1">
 <h1>Garbage Can Regression Challenge</h1>
-<div id="efdb166f" class="cell" data-execution_count="1">
+<div id="3485fdbe" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Follow the challenge instructions from your course to complete your analysis.</p>
 <section id="bivariate-regression-anxiety-stresssurvey" class="level3">
 <h3 class="anchored" data-anchor-id="bivariate-regression-anxiety-stresssurvey">Bivariate regression: Anxiety ~ StressSurvey</h3>
-<div id="9ce4387e" class="cell" data-execution_count="2">
+<div id="090f219b" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"StressSurvey"</span>]])</span>
@@ -176,6 +176,18 @@ R^2: 1.0000</code></pre>
 </div>
 </div>
 </section>
+</section>
+<section id="results-summary" class="level2">
+<h2 class="anchored" data-anchor-id="results-summary">Results Summary</h2>
+<p><strong>Estimated Coefficients from Bivariate Regression (Anxiety ~ StressSurvey):</strong> - <strong>Intercept</strong>: -1.524 - <strong>StressSurvey coefficient</strong>: 1.047 - <strong>R²</strong>: 0.9011 (90.11% of variance explained)</p>
+<p><strong>True Relationship Coefficients (Anxiety ~ Stress + Time):</strong> - <strong>Intercept</strong>: ~0 (essentially zero) - <strong>Stress coefficient</strong>: 1.000 - <strong>Time coefficient</strong>: 0.100 - <strong>R²</strong>: 1.0000 (100% of variance explained)</p>
+<p><strong>Comparison to True Relationship:</strong></p>
+<p><strong>Key Differences:</strong> 1. <strong>Slope bias</strong>: The bivariate regression estimates a slope of 1.047 for StressSurvey, which is close to but not exactly the true coefficient of 1.0 for Stress. This slight overestimation occurs because the omitted Time variable’s effect gets partially absorbed into the StressSurvey coefficient.</p>
+<ol start="2" type="1">
+<li><p><strong>Intercept bias</strong>: The bivariate model produces a negative intercept (-1.524) instead of the true zero intercept. This negative bias compensates for the missing Time variable’s positive effect.</p></li>
+<li><p><strong>Model fit</strong>: The bivariate model explains 90.11% of the variance compared to 100% for the true model, indicating that omitting the Time variable reduces explanatory power.</p></li>
+</ol>
+<p><strong>Conclusion</strong>: The bivariate regression demonstrates <strong>omitted variable bias</strong> - when you exclude the Time variable from the model, its effect gets absorbed into the intercept and slope of the included StressSurvey variable, causing the estimated coefficients to differ from the true relationship A = S + 0.1 × T. This illustrates why including all relevant variables in regression models is crucial for obtaining unbiased coefficient estimates.</p>
 </section>
 </section>
 

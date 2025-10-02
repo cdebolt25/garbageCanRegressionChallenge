@@ -60,3 +60,27 @@ print({"Intercept": float(ols_true.params["const"]),
        "Time": float(ols_true.params["Time"])})
 print(f"R^2: {ols_true.rsquared:.4f}")
 ```
+
+## Results Summary
+
+**Estimated Coefficients from Bivariate Regression (Anxiety ~ StressSurvey):**
+- **Intercept**: -1.524
+- **StressSurvey coefficient**: 1.047
+- **R²**: 0.9011 (90.11% of variance explained)
+
+**True Relationship Coefficients (Anxiety ~ Stress + Time):**
+- **Intercept**: ~0 (essentially zero)
+- **Stress coefficient**: 1.000
+- **Time coefficient**: 0.100
+- **R²**: 1.0000 (100% of variance explained)
+
+**Comparison to True Relationship:**
+
+**Key Differences:**
+1. **Slope bias**: The bivariate regression estimates a slope of 1.047 for StressSurvey, which is close to but not exactly the true coefficient of 1.0 for Stress. This slight overestimation occurs because the omitted Time variable's effect gets partially absorbed into the StressSurvey coefficient.
+
+2. **Intercept bias**: The bivariate model produces a negative intercept (-1.524) instead of the true zero intercept. This negative bias compensates for the missing Time variable's positive effect.
+
+3. **Model fit**: The bivariate model explains 90.11% of the variance compared to 100% for the true model, indicating that omitting the Time variable reduces explanatory power.
+
+**Conclusion**: The bivariate regression demonstrates **omitted variable bias** - when you exclude the Time variable from the model, its effect gets absorbed into the intercept and slope of the included StressSurvey variable, causing the estimated coefficients to differ from the true relationship A = S + 0.1 × T. This illustrates why including all relevant variables in regression models is crucial for obtaining unbiased coefficient estimates.
