@@ -4,12 +4,12 @@ format:
   html: default
 execute:
   echo: false
-  eval: false
+  eval: true
 ---
 
 # Garbage Can Regression Challenge
 
-```python
+```{python}
 #| echo: true
 import pandas as pd
 import numpy as np
@@ -37,7 +37,7 @@ Follow the challenge instructions from your course to complete your analysis.
 
 ### Bivariate regression: Anxiety ~ StressSurvey
 
-```python
+```{python}
 #| echo: true
 import statsmodels.api as sm
 
