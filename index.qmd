@@ -6,8 +6,7 @@ execute:
   echo: false
   eval: true
 ---
-
-# Garbage Can Regression Challenge
+## Multiple Regression 
 
 ```{python}
 #| echo: true
