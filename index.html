@@ -101,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="garbage-can-regression-challenge" class="level1">
 <h1>Garbage Can Regression Challenge</h1>
-<div id="d0c6c509" class="cell" data-execution_count="1">
+<div id="96f19cfb" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Follow the challenge instructions from your course to complete your analysis.</p>
 <section id="bivariate-regression-anxiety-stresssurvey" class="level3">
 <h3 class="anchored" data-anchor-id="bivariate-regression-anxiety-stresssurvey">Bivariate regression: Anxiety ~ StressSurvey</h3>
-<div id="9054befe" class="cell" data-execution_count="2">
+<div id="e3537685" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"StressSurvey"</span>]])</span>
@@ -190,7 +190,7 @@ R^2: 1.0000</code></pre>
 <p><strong>Conclusion</strong>: The bivariate regression demonstrates <strong>omitted variable bias</strong> - when you exclude the Time variable from the model, its effect gets absorbed into the intercept and slope of the included StressSurvey variable, causing the estimated coefficients to differ from the true relationship A = S + 0.1 × T. This illustrates why including all relevant variables in regression models is crucial for obtaining unbiased coefficient estimates.</p>
 <section id="scatter-plot-anxiety-vs.-stresssurvey-with-regression-line" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot-anxiety-vs.-stresssurvey-with-regression-line">Scatter plot: Anxiety vs.&nbsp;StressSurvey with regression line</h3>
-<div id="9aac85d5" class="cell" data-execution_count="3">
+<div id="15ad5bed" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -203,7 +203,7 @@ R^2: 1.0000</code></pre>
 </section>
 <section id="bivariate-regression-anxiety-time" class="level3">
 <h3 class="anchored" data-anchor-id="bivariate-regression-anxiety-time">Bivariate regression: Anxiety ~ Time</h3>
-<div id="ea6b175e" class="cell" data-execution_count="4">
+<div id="a38eb1f3" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>X_time <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"Time"</span>]])</span>
@@ -225,7 +225,7 @@ R^2: 0.5630</code></pre>
 </section>
 <section id="scatter-plot-anxiety-vs.-time-with-regression-line" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot-anxiety-vs.-time-with-regression-line">Scatter plot: Anxiety vs.&nbsp;Time with regression line</h3>
-<div id="e9a4110d" class="cell" data-execution_count="5">
+<div id="81d3b0bd" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -238,7 +238,7 @@ R^2: 0.5630</code></pre>
 </section>
 <section id="multiple-regression-anxiety-stresssurvey-time" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-regression-anxiety-stresssurvey-time">Multiple regression: Anxiety ~ StressSurvey + Time</h3>
-<div id="e3d4fea3" class="cell" data-execution_count="6">
+<div id="1c7bb4ee" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>X_both <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"StressSurvey"</span>, <span class="st">"Time"</span>]])</span>
@@ -261,6 +261,56 @@ R^2: 0.9350</code></pre>
 </div>
 <p><strong>Commentary</strong>: With both predictors included, the <code>Time</code> coefficient should be very close to the true 0.1. The <code>StressSurvey</code> coefficient remains strongly positive but differs from the true coefficient on <code>Stress</code> (1.0) because <code>StressSurvey</code> is a scaled survey proxy rather than the true <code>Stress</code> measure. The intercept should be near zero. Overall fit approaches the true model’s as both drivers of <code>Anxiety</code> are represented.</p>
 </section>
+<section id="multiple-regression-anxiety-stress-time-true-variables" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-regression-anxiety-stress-time-true-variables">Multiple regression: Anxiety ~ Stress + Time (true variables)</h3>
+<div id="362eb407" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>X_true2 <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"Stress"</span>, <span class="st">"Time"</span>]])</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> observDF[<span class="st">"Anxiety"</span>]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ols_true2 <span class="op">=</span> sm.OLS(y, X_true2).fit()</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimated coefficients (Anxiety ~ Stress + Time):"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Intercept"</span>: <span class="bu">float</span>(ols_true2.params[<span class="st">"const"</span>]),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Stress"</span>: <span class="bu">float</span>(ols_true2.params[<span class="st">"Stress"</span>]),</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Time"</span>: <span class="bu">float</span>(ols_true2.params[<span class="st">"Time"</span>]),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R^2: </span><span class="sc">{</span>ols_true2<span class="sc">.</span>rsquared<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Estimated coefficients (Anxiety ~ Stress + Time):
+{'Intercept': 1.1102230246251565e-16, 'Stress': 1.0000000000000002, 'Time': 0.09999999999999876}
+R^2: 1.0000</code></pre>
+</div>
+</div>
+<p><strong>Commentary</strong>: Using the true predictors recovers the data-generating process almost exactly: intercept ≈ 0, <code>Stress</code> coefficient ≈ 1.0, and <code>Time</code> coefficient ≈ 0.1, with R² ≈ 1.000. These align with the true relationship A = S + 0.1 × T, confirming no omitted-variable bias when both drivers are included.</p>
+</section>
+</section>
+<section id="comparison-of-multiple-regression-models" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-multiple-regression-models">Comparison of multiple regression models</h2>
+<ul>
+<li><strong>R² comparison</strong>:
+<ul>
+<li><strong>Anxiety ~ StressSurvey + Time</strong>: High R² (near true model) but below 1 because <code>StressSurvey</code> is a proxy.</li>
+<li><strong>Anxiety ~ Stress + Time (true vars)</strong>: R² ≈ 1.000, perfectly matching the data-generating process.</li>
+</ul></li>
+<li><strong>Coefficient interpretation</strong>:
+<ul>
+<li>In the proxy model, the <strong>Time</strong> coefficient is ≈ 0.1 (close to true), and the <strong>StressSurvey</strong> coefficient is strongly positive but not 1.0 due to survey scaling vs.&nbsp;true <code>Stress</code>.</li>
+<li>In the true model, <strong>Stress ≈ 1.0</strong> and <strong>Time ≈ 0.1</strong>, with intercept ≈ 0, matching A = S + 0.1 × T.</li>
+</ul></li>
+<li><strong>Significance</strong>:
+<ul>
+<li>In practice, both models show statistically significant coefficients (Time and the stress measure) because effects are strong relative to noise. The true model’s estimates are exact; the proxy model’s are significant but biased toward the survey scale.</li>
+</ul></li>
+<li><strong>Implications</strong>:
+<ul>
+<li>Multiple regression recovers true effects when relevant predictors are included and measured accurately.</li>
+<li>Using a proxy (e.g., <code>StressSurvey</code>) can yield high fit and significant coefficients, yet coefficients reflect the proxy’s scale and may bias interpretation.</li>
+<li>Statistical significance does not guarantee unbiasedness or causality; variable choice and measurement quality matter.</li>
+</ul></li>
+</ul>
 </section>
 </section>
 

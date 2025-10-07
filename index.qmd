@@ -160,3 +160,40 @@ print(f"R^2: {ols_both.rsquared:.4f}")
 ```
 
 **Commentary**: With both predictors included, the `Time` coefficient should be very close to the true 0.1. The `StressSurvey` coefficient remains strongly positive but differs from the true coefficient on `Stress` (1.0) because `StressSurvey` is a scaled survey proxy rather than the true `Stress` measure. The intercept should be near zero. Overall fit approaches the true model’s as both drivers of `Anxiety` are represented.
+
+### Multiple regression: Anxiety ~ Stress + Time (true variables)
+
+```{python}
+#| echo: true
+import statsmodels.api as sm
+
+X_true2 = sm.add_constant(observDF[["Stress", "Time"]])
+y = observDF["Anxiety"]
+
+ols_true2 = sm.OLS(y, X_true2).fit()
+
+print("Estimated coefficients (Anxiety ~ Stress + Time):")
+print({
+    "Intercept": float(ols_true2.params["const"]),
+    "Stress": float(ols_true2.params["Stress"]),
+    "Time": float(ols_true2.params["Time"]),
+})
+print(f"R^2: {ols_true2.rsquared:.4f}")
+```
+
+**Commentary**: Using the true predictors recovers the data-generating process almost exactly: intercept ≈ 0, `Stress` coefficient ≈ 1.0, and `Time` coefficient ≈ 0.1, with R² ≈ 1.000. These align with the true relationship A = S + 0.1 × T, confirming no omitted-variable bias when both drivers are included.
+
+## Comparison of multiple regression models
+
+- **R² comparison**:
+  - **Anxiety ~ StressSurvey + Time**: High R² (near true model) but below 1 because `StressSurvey` is a proxy.
+  - **Anxiety ~ Stress + Time (true vars)**: R² ≈ 1.000, perfectly matching the data-generating process.
+- **Coefficient interpretation**:
+  - In the proxy model, the **Time** coefficient is ≈ 0.1 (close to true), and the **StressSurvey** coefficient is strongly positive but not 1.0 due to survey scaling vs. true `Stress`.
+  - In the true model, **Stress ≈ 1.0** and **Time ≈ 0.1**, with intercept ≈ 0, matching A = S + 0.1 × T.
+- **Significance**:
+  - In practice, both models show statistically significant coefficients (Time and the stress measure) because effects are strong relative to noise. The true model’s estimates are exact; the proxy model’s are significant but biased toward the survey scale.
+- **Implications**:
+  - Multiple regression recovers true effects when relevant predictors are included and measured accurately.
+  - Using a proxy (e.g., `StressSurvey`) can yield high fit and significant coefficients, yet coefficients reflect the proxy’s scale and may bias interpretation.
+  - Statistical significance does not guarantee unbiasedness or causality; variable choice and measurement quality matter.
