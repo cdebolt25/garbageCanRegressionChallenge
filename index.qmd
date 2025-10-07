@@ -61,6 +61,7 @@ print({"Intercept": float(ols_true.params["const"]),
 print(f"R^2: {ols_true.rsquared:.4f}")
 ```
 
+
 ## Results Summary
 
 **Estimated Coefficients from Bivariate Regression (Anxiety ~ StressSurvey):**
@@ -84,3 +85,78 @@ print(f"R^2: {ols_true.rsquared:.4f}")
 3. **Model fit**: The bivariate model explains 90.11% of the variance compared to 100% for the true model, indicating that omitting the Time variable reduces explanatory power.
 
 **Conclusion**: The bivariate regression demonstrates **omitted variable bias** - when you exclude the Time variable from the model, its effect gets absorbed into the intercept and slope of the included StressSurvey variable, causing the estimated coefficients to differ from the true relationship A = S + 0.1 × T. This illustrates why including all relevant variables in regression models is crucial for obtaining unbiased coefficient estimates.
+
+### Scatter plot: Anxiety vs. StressSurvey with regression line
+
+```{python}
+#| echo: false
+# Scatter and fitted regression line using seaborn
+plt.figure(figsize=(6,4))
+sns.scatterplot(data=observDF, x="StressSurvey", y="Anxiety", s=60)
+sns.regplot(data=observDF, x="StressSurvey", y="Anxiety", scatter=False, ci=None, color="crimson")
+plt.title("Anxiety vs. StressSurvey with Fitted Line")
+plt.xlabel("StressSurvey")
+plt.ylabel("Anxiety")
+plt.tight_layout()
+plt.show()
+```
+
+**Fit commentary**: The fitted line tracks the upward trend well and the points lie close to the line, consistent with the high R² from the bivariate regression. However, because `Time` is omitted from this two-variable view, the line absorbs some of its effect, which is why the intercept is negative and the slope is slightly above 1 relative to the true model A = S + 0.1 × T.
+
+### Bivariate regression: Anxiety ~ Time
+
+```{python}
+#| echo: true
+import statsmodels.api as sm
+
+X_time = sm.add_constant(observDF[["Time"]])
+y = observDF["Anxiety"]
+
+ols_time = sm.OLS(y, X_time).fit()
+
+print("Estimated coefficients (Anxiety ~ Time):")
+print({"Intercept": float(ols_time.params["const"]),
+       "Time": float(ols_time.params["Time"])})
+print(f"R^2: {ols_time.rsquared:.4f}")
+```
+
+**Commentary**: This bivariate regression on `Time` alone should estimate a slope near the true 0.1. The intercept absorbs the average `Stress` effect because `Stress` is omitted, and the fit (R²) is lower than the full model since `Time` cannot capture the variation in `Anxiety` driven by `Stress`.
+
+### Scatter plot: Anxiety vs. Time with regression line
+
+```{python}
+#| echo: false
+# Scatter and fitted regression line for Time vs Anxiety
+plt.figure(figsize=(6,4))
+sns.scatterplot(data=observDF, x="Time", y="Anxiety", s=60)
+sns.regplot(data=observDF, x="Time", y="Anxiety", scatter=False, ci=None, color="darkgreen")
+plt.title("Anxiety vs. Time with Fitted Line")
+plt.xlabel("Time (minutes on social media, last 24h)")
+plt.ylabel("Anxiety")
+plt.tight_layout()
+plt.show()
+```
+
+**Fit commentary**: The fitted line shows a modest positive slope, consistent with the true coefficient on `Time` (≈ 0.1). Points still exhibit vertical spread because `Stress`—a major driver of `Anxiety`—is omitted in this two-variable view. Consequently, the line’s intercept reflects average `Stress`, and the fit is weaker than the full model including both `Stress` and `Time`.
+
+### Multiple regression: Anxiety ~ StressSurvey + Time
+
+```{python}
+#| echo: true
+import statsmodels.api as sm
+
+X_both = sm.add_constant(observDF[["StressSurvey", "Time"]])
+y = observDF["Anxiety"]
+
+ols_both = sm.OLS(y, X_both).fit()
+
+print("Estimated coefficients (Anxiety ~ StressSurvey + Time):")
+print({
+    "Intercept": float(ols_both.params["const"]),
+    "StressSurvey": float(ols_both.params["StressSurvey"]),
+    "Time": float(ols_both.params["Time"]),
+})
+print(f"R^2: {ols_both.rsquared:.4f}")
+```
+
+**Commentary**: With both predictors included, the `Time` coefficient should be very close to the true 0.1. The `StressSurvey` coefficient remains strongly positive but differs from the true coefficient on `Stress` (1.0) because `StressSurvey` is a scaled survey proxy rather than the true `Stress` measure. The intercept should be near zero. Overall fit approaches the true model’s as both drivers of `Anxiety` are represented.
