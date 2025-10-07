@@ -197,3 +197,15 @@ print(f"R^2: {ols_true2.rsquared:.4f}")
   - Multiple regression recovers true effects when relevant predictors are included and measured accurately.
   - Using a proxy (e.g., `StressSurvey`) can yield high fit and significant coefficients, yet coefficients reflect the proxy’s scale and may bias interpretation.
   - Statistical significance does not guarantee unbiasedness or causality; variable choice and measurement quality matter.
+
+## Media framing and real-world interpretation
+
+- Popular press headline for model using `StressSurvey + Time`:
+  - “More Time on Social Media Dramatically Increases Anxiety—even After ‘Stress’ Is Accounted For.”
+- Popular press headline for model using true `Stress + Time`:
+  - “Stress Drives Anxiety; Social Media Time Has a Small but Real Effect.”
+- Likely audience reactions given confirmation bias:
+  - Typical parents: more likely to believe the first (strong, simple “screens → anxiety” narrative).
+  - Platform executives (Facebook/Instagram/TikTok): prefer the second (emphasizes stress as primary driver and portrays social-media time effect as modest).
+
+Bottom line: Multiple regression results can be statistically significant in both models, but measurement choices (true variable vs. proxy) change magnitudes and the story people tell. Headlines simplify; analysts should emphasize variable quality, effect sizes, and uncertainty, not just significance.

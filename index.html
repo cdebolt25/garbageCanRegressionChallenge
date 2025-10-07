@@ -101,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="garbage-can-regression-challenge" class="level1">
 <h1>Garbage Can Regression Challenge</h1>
-<div id="96f19cfb" class="cell" data-execution_count="1">
+<div id="1b59144b" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Follow the challenge instructions from your course to complete your analysis.</p>
 <section id="bivariate-regression-anxiety-stresssurvey" class="level3">
 <h3 class="anchored" data-anchor-id="bivariate-regression-anxiety-stresssurvey">Bivariate regression: Anxiety ~ StressSurvey</h3>
-<div id="e3537685" class="cell" data-execution_count="2">
+<div id="d3e69bd6" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"StressSurvey"</span>]])</span>
@@ -190,7 +190,7 @@ R^2: 1.0000</code></pre>
 <p><strong>Conclusion</strong>: The bivariate regression demonstrates <strong>omitted variable bias</strong> - when you exclude the Time variable from the model, its effect gets absorbed into the intercept and slope of the included StressSurvey variable, causing the estimated coefficients to differ from the true relationship A = S + 0.1 × T. This illustrates why including all relevant variables in regression models is crucial for obtaining unbiased coefficient estimates.</p>
 <section id="scatter-plot-anxiety-vs.-stresssurvey-with-regression-line" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot-anxiety-vs.-stresssurvey-with-regression-line">Scatter plot: Anxiety vs.&nbsp;StressSurvey with regression line</h3>
-<div id="15ad5bed" class="cell" data-execution_count="3">
+<div id="a1f4ccec" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -203,7 +203,7 @@ R^2: 1.0000</code></pre>
 </section>
 <section id="bivariate-regression-anxiety-time" class="level3">
 <h3 class="anchored" data-anchor-id="bivariate-regression-anxiety-time">Bivariate regression: Anxiety ~ Time</h3>
-<div id="a38eb1f3" class="cell" data-execution_count="4">
+<div id="6474507e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>X_time <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"Time"</span>]])</span>
@@ -225,7 +225,7 @@ R^2: 0.5630</code></pre>
 </section>
 <section id="scatter-plot-anxiety-vs.-time-with-regression-line" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot-anxiety-vs.-time-with-regression-line">Scatter plot: Anxiety vs.&nbsp;Time with regression line</h3>
-<div id="81d3b0bd" class="cell" data-execution_count="5">
+<div id="7cd48615" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -238,7 +238,7 @@ R^2: 0.5630</code></pre>
 </section>
 <section id="multiple-regression-anxiety-stresssurvey-time" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-regression-anxiety-stresssurvey-time">Multiple regression: Anxiety ~ StressSurvey + Time</h3>
-<div id="1c7bb4ee" class="cell" data-execution_count="6">
+<div id="ede7947c" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>X_both <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"StressSurvey"</span>, <span class="st">"Time"</span>]])</span>
@@ -263,7 +263,7 @@ R^2: 0.9350</code></pre>
 </section>
 <section id="multiple-regression-anxiety-stress-time-true-variables" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-regression-anxiety-stress-time-true-variables">Multiple regression: Anxiety ~ Stress + Time (true variables)</h3>
-<div id="362eb407" class="cell" data-execution_count="7">
+<div id="55cc3a74" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>X_true2 <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"Stress"</span>, <span class="st">"Time"</span>]])</span>
@@ -311,6 +311,25 @@ R^2: 1.0000</code></pre>
 <li>Statistical significance does not guarantee unbiasedness or causality; variable choice and measurement quality matter.</li>
 </ul></li>
 </ul>
+</section>
+<section id="media-framing-and-real-world-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="media-framing-and-real-world-interpretation">Media framing and real-world interpretation</h2>
+<ul>
+<li>Popular press headline for model using <code>StressSurvey + Time</code>:
+<ul>
+<li>“More Time on Social Media Dramatically Increases Anxiety—even After ‘Stress’ Is Accounted For.”</li>
+</ul></li>
+<li>Popular press headline for model using true <code>Stress + Time</code>:
+<ul>
+<li>“Stress Drives Anxiety; Social Media Time Has a Small but Real Effect.”</li>
+</ul></li>
+<li>Likely audience reactions given confirmation bias:
+<ul>
+<li>Typical parents: more likely to believe the first (strong, simple “screens → anxiety” narrative).</li>
+<li>Platform executives (Facebook/Instagram/TikTok): prefer the second (emphasizes stress as primary driver and portrays social-media time effect as modest).</li>
+</ul></li>
+</ul>
+<p>Bottom line: Multiple regression results can be statistically significant in both models, but measurement choices (true variable vs.&nbsp;proxy) change magnitudes and the story people tell. Headlines simplify; analysts should emphasize variable quality, effect sizes, and uncertainty, not just significance.</p>
 </section>
 </section>
 
