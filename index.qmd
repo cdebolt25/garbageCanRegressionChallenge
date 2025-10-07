@@ -1,5 +1,5 @@
 ---
-title: "Garbage Can Regression Challenge"
+title: "Garbage Can Regression Challenge!"
 format:
   html: default
 execute:
@@ -9,7 +9,7 @@ execute:
 ## Multiple Regression 
 
 ```{python}
-#| echo: true
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -37,7 +37,7 @@ Follow the challenge instructions from your course to complete your analysis.
 ### Bivariate regression: Anxiety ~ StressSurvey
 
 ```{python}
-#| echo: true
+
 import statsmodels.api as sm
 
 X = sm.add_constant(observDF[["StressSurvey"]])
@@ -88,7 +88,7 @@ print(f"R^2: {ols_true.rsquared:.4f}")
 ### Scatter plot: Anxiety vs. StressSurvey with regression line
 
 ```{python}
-#| echo: false
+
 # Scatter and fitted regression line using seaborn
 plt.figure(figsize=(6,4))
 sns.scatterplot(data=observDF, x="StressSurvey", y="Anxiety", s=60)
@@ -105,7 +105,7 @@ plt.show()
 ### Bivariate regression: Anxiety ~ Time
 
 ```{python}
-#| echo: true
+
 import statsmodels.api as sm
 
 X_time = sm.add_constant(observDF[["Time"]])
@@ -124,7 +124,7 @@ print(f"R^2: {ols_time.rsquared:.4f}")
 ### Scatter plot: Anxiety vs. Time with regression line
 
 ```{python}
-#| echo: false
+
 # Scatter and fitted regression line for Time vs Anxiety
 plt.figure(figsize=(6,4))
 sns.scatterplot(data=observDF, x="Time", y="Anxiety", s=60)
@@ -141,7 +141,7 @@ plt.show()
 ### Multiple regression: Anxiety ~ StressSurvey + Time
 
 ```{python}
-#| echo: true
+
 import statsmodels.api as sm
 
 X_both = sm.add_constant(observDF[["StressSurvey", "Time"]])
@@ -163,7 +163,7 @@ print(f"R^2: {ols_both.rsquared:.4f}")
 ### Multiple regression: Anxiety ~ Stress + Time (true variables)
 
 ```{python}
-#| echo: true
+
 import statsmodels.api as sm
 
 X_true2 = sm.add_constant(observDF[["Stress", "Time"]])
@@ -220,7 +220,7 @@ Tip applied: split into a meaningful subset (a statistical regime) and favor sim
 ### Multiple regression on the subset: Anxiety ~ StressSurvey + Time
 
 ```{python}
-#| echo: true
+
 import statsmodels.api as sm
 
 subset_df = observDF[observDF["StressSurvey"] <= 9].copy()
@@ -243,7 +243,7 @@ print(f"R^2: {ols_sub.rsquared:.4f}")
 ### Quick graphical diagnostics
 
 ```{python}
-#| echo: false
+
 # Residuals vs fitted to visually assess linearity/heteroskedasticity
 fitted = ols_sub.fittedvalues
 resid = ols_sub.resid
