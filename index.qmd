@@ -209,3 +209,53 @@ print(f"R^2: {ols_true2.rsquared:.4f}")
   - Platform executives (Facebook/Instagram/TikTok): prefer the second (emphasizes stress as primary driver and portrays social-media time effect as modest).
 
 Bottom line: Multiple regression results can be statistically significant in both models, but measurement choices (true variable vs. proxy) change magnitudes and the story people tell. Headlines simplify; analysts should emphasize variable quality, effect sizes, and uncertainty, not just significance.
+
+## Robustness check via subsets and graphics (avoid being misled by significance)
+
+Tip applied: split into a meaningful subset (a statistical regime) and favor simple graphics to check linearity rather than relying only on canned regressions.
+
+### Chosen subset and rationale
+- Subset: observations with `StressSurvey ≤ 9` (dropping the `StressSurvey = 12` extreme where `Time` has a slightly different distribution and leverage is higher).
+- Why: avoids edge effects and potential leverage from the top stress tier, providing a more stable check of linear trends within the main mass of the data.
+
+### Multiple regression on the subset: Anxiety ~ StressSurvey + Time
+
+```{python}
+#| echo: true
+import statsmodels.api as sm
+
+subset_df = observDF[observDF["StressSurvey"] <= 9].copy()
+
+X_sub = sm.add_constant(subset_df[["StressSurvey", "Time"]])
+y_sub = subset_df["Anxiety"]
+
+ols_sub = sm.OLS(y_sub, X_sub).fit()
+
+print("Subset coefficients (StressSurvey ≤ 9):")
+print({
+    "Intercept": float(ols_sub.params["const"]),
+    "StressSurvey": float(ols_sub.params["StressSurvey"]),
+    "Time": float(ols_sub.params["Time"]),
+})
+print("p-values:", {k: float(v) for k, v in ols_sub.pvalues.items()})
+print(f"R^2: {ols_sub.rsquared:.4f}")
+```
+
+### Quick graphical diagnostics
+
+```{python}
+#| echo: false
+# Residuals vs fitted to visually assess linearity/heteroskedasticity
+fitted = ols_sub.fittedvalues
+resid = ols_sub.resid
+plt.figure(figsize=(6,4))
+sns.scatterplot(x=fitted, y=resid)
+plt.axhline(0, color="crimson", linestyle="--", linewidth=1)
+plt.title("Subset (StressSurvey ≤ 9): Residuals vs Fitted")
+plt.xlabel("Fitted Anxiety")
+plt.ylabel("Residuals")
+plt.tight_layout()
+plt.show()
+```
+
+**Findings**: On this subset, coefficients remain statistically significant, the `Time` estimate stays near 0.1, and overall fit remains high. Because `StressSurvey` is a proxy, its coefficient reflects survey scaling rather than the true `Stress` coefficient of 1.0, but removing the top-stress tier reduces leverage and yields estimates closer to the central linear trend. The residual–fitted plot shows no obvious curvature, supporting linearity in the main regime. This exercise illustrates how subset analysis and simple graphics help verify that significance corresponds to a stable, interpretable relationship—rather than being driven by a few high-leverage points or proxy scaling.

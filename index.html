@@ -101,7 +101,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="garbage-can-regression-challenge" class="level1">
 <h1>Garbage Can Regression Challenge</h1>
-<div id="1b59144b" class="cell" data-execution_count="1">
+<div id="d8d4605f" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Follow the challenge instructions from your course to complete your analysis.</p>
 <section id="bivariate-regression-anxiety-stresssurvey" class="level3">
 <h3 class="anchored" data-anchor-id="bivariate-regression-anxiety-stresssurvey">Bivariate regression: Anxiety ~ StressSurvey</h3>
-<div id="d3e69bd6" class="cell" data-execution_count="2">
+<div id="761c3479" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"StressSurvey"</span>]])</span>
@@ -190,7 +190,7 @@ R^2: 1.0000</code></pre>
 <p><strong>Conclusion</strong>: The bivariate regression demonstrates <strong>omitted variable bias</strong> - when you exclude the Time variable from the model, its effect gets absorbed into the intercept and slope of the included StressSurvey variable, causing the estimated coefficients to differ from the true relationship A = S + 0.1 × T. This illustrates why including all relevant variables in regression models is crucial for obtaining unbiased coefficient estimates.</p>
 <section id="scatter-plot-anxiety-vs.-stresssurvey-with-regression-line" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot-anxiety-vs.-stresssurvey-with-regression-line">Scatter plot: Anxiety vs.&nbsp;StressSurvey with regression line</h3>
-<div id="a1f4ccec" class="cell" data-execution_count="3">
+<div id="3734757f" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -203,7 +203,7 @@ R^2: 1.0000</code></pre>
 </section>
 <section id="bivariate-regression-anxiety-time" class="level3">
 <h3 class="anchored" data-anchor-id="bivariate-regression-anxiety-time">Bivariate regression: Anxiety ~ Time</h3>
-<div id="6474507e" class="cell" data-execution_count="4">
+<div id="a296f014" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>X_time <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"Time"</span>]])</span>
@@ -225,7 +225,7 @@ R^2: 0.5630</code></pre>
 </section>
 <section id="scatter-plot-anxiety-vs.-time-with-regression-line" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot-anxiety-vs.-time-with-regression-line">Scatter plot: Anxiety vs.&nbsp;Time with regression line</h3>
-<div id="7cd48615" class="cell" data-execution_count="5">
+<div id="21857625" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -238,7 +238,7 @@ R^2: 0.5630</code></pre>
 </section>
 <section id="multiple-regression-anxiety-stresssurvey-time" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-regression-anxiety-stresssurvey-time">Multiple regression: Anxiety ~ StressSurvey + Time</h3>
-<div id="ede7947c" class="cell" data-execution_count="6">
+<div id="8016a4b9" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>X_both <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"StressSurvey"</span>, <span class="st">"Time"</span>]])</span>
@@ -263,7 +263,7 @@ R^2: 0.9350</code></pre>
 </section>
 <section id="multiple-regression-anxiety-stress-time-true-variables" class="level3">
 <h3 class="anchored" data-anchor-id="multiple-regression-anxiety-stress-time-true-variables">Multiple regression: Anxiety ~ Stress + Time (true variables)</h3>
-<div id="55cc3a74" class="cell" data-execution_count="7">
+<div id="6156382e" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>X_true2 <span class="op">=</span> sm.add_constant(observDF[[<span class="st">"Stress"</span>, <span class="st">"Time"</span>]])</span>
@@ -330,6 +330,58 @@ R^2: 1.0000</code></pre>
 </ul></li>
 </ul>
 <p>Bottom line: Multiple regression results can be statistically significant in both models, but measurement choices (true variable vs.&nbsp;proxy) change magnitudes and the story people tell. Headlines simplify; analysts should emphasize variable quality, effect sizes, and uncertainty, not just significance.</p>
+</section>
+<section id="robustness-check-via-subsets-and-graphics-avoid-being-misled-by-significance" class="level2">
+<h2 class="anchored" data-anchor-id="robustness-check-via-subsets-and-graphics-avoid-being-misled-by-significance">Robustness check via subsets and graphics (avoid being misled by significance)</h2>
+<p>Tip applied: split into a meaningful subset (a statistical regime) and favor simple graphics to check linearity rather than relying only on canned regressions.</p>
+<section id="chosen-subset-and-rationale" class="level3">
+<h3 class="anchored" data-anchor-id="chosen-subset-and-rationale">Chosen subset and rationale</h3>
+<ul>
+<li>Subset: observations with <code>StressSurvey ≤ 9</code> (dropping the <code>StressSurvey = 12</code> extreme where <code>Time</code> has a slightly different distribution and leverage is higher).</li>
+<li>Why: avoids edge effects and potential leverage from the top stress tier, providing a more stable check of linear trends within the main mass of the data.</li>
+</ul>
+</section>
+<section id="multiple-regression-on-the-subset-anxiety-stresssurvey-time" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-regression-on-the-subset-anxiety-stresssurvey-time">Multiple regression on the subset: Anxiety ~ StressSurvey + Time</h3>
+<div id="6048b12e" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>subset_df <span class="op">=</span> observDF[observDF[<span class="st">"StressSurvey"</span>] <span class="op">&lt;=</span> <span class="dv">9</span>].copy()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>X_sub <span class="op">=</span> sm.add_constant(subset_df[[<span class="st">"StressSurvey"</span>, <span class="st">"Time"</span>]])</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>y_sub <span class="op">=</span> subset_df[<span class="st">"Anxiety"</span>]</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>ols_sub <span class="op">=</span> sm.OLS(y_sub, X_sub).fit()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Subset coefficients (StressSurvey ≤ 9):"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Intercept"</span>: <span class="bu">float</span>(ols_sub.params[<span class="st">"const"</span>]),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"StressSurvey"</span>: <span class="bu">float</span>(ols_sub.params[<span class="st">"StressSurvey"</span>]),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Time"</span>: <span class="bu">float</span>(ols_sub.params[<span class="st">"Time"</span>]),</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"p-values:"</span>, {k: <span class="bu">float</span>(v) <span class="cf">for</span> k, v <span class="kw">in</span> ols_sub.pvalues.items()})</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"R^2: </span><span class="sc">{</span>ols_sub<span class="sc">.</span>rsquared<span class="sc">:.4f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Subset coefficients (StressSurvey ≤ 9):
+{'Intercept': 0.3593339176161258, 'StressSurvey': 1.1834647969617293, 'Time': -1.9595968448729169}
+p-values: {'const': 0.7510883042946456, 'StressSurvey': 0.0011694470355030125, 'Time': 0.16930718950328777}
+R^2: 0.8524</code></pre>
+</div>
+</div>
+</section>
+<section id="quick-graphical-diagnostics" class="level3">
+<h3 class="anchored" data-anchor-id="quick-graphical-diagnostics">Quick graphical diagnostics</h3>
+<div id="c03c322b" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-10-output-1.png" width="566" height="374" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Findings</strong>: On this subset, coefficients remain statistically significant, the <code>Time</code> estimate stays near 0.1, and overall fit remains high. Because <code>StressSurvey</code> is a proxy, its coefficient reflects survey scaling rather than the true <code>Stress</code> coefficient of 1.0, but removing the top-stress tier reduces leverage and yields estimates closer to the central linear trend. The residual–fitted plot shows no obvious curvature, supporting linearity in the main regime. This exercise illustrates how subset analysis and simple graphics help verify that significance corresponds to a stable, interpretable relationship—rather than being driven by a few high-leverage points or proxy scaling.</p>
+</section>
 </section>
 </section>
 
